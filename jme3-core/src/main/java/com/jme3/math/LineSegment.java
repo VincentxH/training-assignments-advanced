@@ -423,116 +423,194 @@ public class LineSegment implements Cloneable, Savable, java.io.Serializable {
         float fB1 = -kDiff.dot(direction);
         float fC = kDiff.lengthSquared();
         float fDet = FastMath.abs(1.0f - fA01 * fA01);
-        float fS0, fS1, fSqrDist, fExtDet;
+        float fSqrDist;
 
-        if (fDet >= FastMath.FLT_EPSILON) {
-            // The ray and segment are not parallel.
-            fS0 = fA01 * fB1 - fB0;
-            fS1 = fA01 * fB0 - fB1;
-            fExtDet = extent * fDet;
+        boolean rayToSegmentNotParallel = fDet >= FastMath.FLT_EPSILON;
 
-            if (fS0 >= (float) 0.0) {
-                if (fS1 >= -fExtDet) {
-                    if (fS1 <= fExtDet) // region 0
-                    {
-                        // minimum at interior points of ray and segment
-                        float fInvDet = ((float) 1.0) / fDet;
-                        fS0 *= fInvDet;
-                        fS1 *= fInvDet;
-                        fSqrDist = fS0
-                                * (fS0 + fA01 * fS1 + ((float) 2.0) * fB0)
-                                + fS1
-                                * (fA01 * fS0 + fS1 + ((float) 2.0) * fB1) + fC;
-                    } else // region 1
-                    {
-                        fS1 = extent;
-                        fS0 = -(fA01 * fS1 + fB0);
-                        if (fS0 > (float) 0.0) {
-                            fSqrDist = -fS0 * fS0 + fS1
-                                    * (fS1 + ((float) 2.0) * fB1) + fC;
-                        } else {
-                            fS0 = (float) 0.0;
-                            fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
-                        }
-                    }
-                } else // region 5
-                {
-                    fS1 = -extent;
-                    fS0 = -(fA01 * fS1 + fB0);
-                    if (fS0 > (float) 0.0) {
-                        fSqrDist = -fS0 * fS0 + fS1
-                                * (fS1 + ((float) 2.0) * fB1) + fC;
-                    } else {
-                        fS0 = (float) 0.0;
-                        fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
-                    }
-                }
-            } else {
-                if (fS1 <= -fExtDet) // region 4
-                {
-                    fS0 = -(-fA01 * extent + fB0);
-                    if (fS0 > (float) 0.0) {
-                        fS1 = -extent;
-                        fSqrDist = -fS0 * fS0 + fS1
-                                * (fS1 + ((float) 2.0) * fB1) + fC;
-                    } else {
-                        fS0 = (float) 0.0;
-                        fS1 = -fB1;
-                        if (fS1 < -extent) {
-                            fS1 = -extent;
-                        } else if (fS1 > extent) {
-                            fS1 = extent;
-                        }
-                        fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
-                    }
-                } else if (fS1 <= fExtDet) // region 3
-                {
-                    fS0 = (float) 0.0;
-                    fS1 = -fB1;
-                    if (fS1 < -extent) {
-                        fS1 = -extent;
-                    } else if (fS1 > extent) {
-                        fS1 = extent;
-                    }
-                    fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
-                } else // region 2
-                {
-                    fS0 = -(fA01 * extent + fB0);
-                    if (fS0 > (float) 0.0) {
-                        fS1 = extent;
-                        fSqrDist = -fS0 * fS0 + fS1
-                                * (fS1 + ((float) 2.0) * fB1) + fC;
-                    } else {
-                        fS0 = (float) 0.0;
-                        fS1 = -fB1;
-                        if (fS1 < -extent) {
-                            fS1 = -extent;
-                        } else if (fS1 > extent) {
-                            fS1 = extent;
-                        }
-                        fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
-                    }
-                }
-            }
+        if (rayToSegmentNotParallel) {
+            fSqrDist = raySegmentNotParallel(fA01, fB0, fB1, fC, fDet);
         } else {
             // ray and segment are parallel
-            if (fA01 > (float) 0.0) {
-                // opposite direction vectors
-                fS1 = -extent;
-            } else {
-                // same direction vectors
-                fS1 = extent;
-            }
-
-            fS0 = -(fA01 * fS1 + fB0);
-            if (fS0 > (float) 0.0) {
-                fSqrDist = -fS0 * fS0 + fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
-            } else {
-                fS0 = (float) 0.0;
-                fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
-            }
+            fSqrDist = raySegmentParallel(fA01, fB0, fB1, fC);
         }
         return FastMath.abs(fSqrDist);
+    }
+
+    private float raySegmentNotParallel(float fA01, float fB0, float fB1, float fC, float fDet) {
+        float fS0;
+        float fS1;
+        float fExtDet;
+        float fSqrDist;// The ray and segment are not parallel.
+        fS0 = fA01 * fB1 - fB0;
+        fS1 = fA01 * fB0 - fB1;
+        fExtDet = extent * fDet;
+
+        boolean region00or01or05 = fS0 >= (float) 0.0;
+
+        if (region00or01or05) {
+            fSqrDist = distanceRegion00or01or05(fA01, fB0, fB1, fC, fDet, fS0, fS1, fExtDet);
+        } else {
+            fSqrDist = distanceRegion02or03or04(fA01, fB0, fB1, fC, fS1, fExtDet);
+        }
+        return fSqrDist;
+    }
+
+    private float distanceRegion02or03or04(float fA01, float fB0, float fB1, float fC, float fS1, float fExtDet) {
+        float fSqrDist;
+        boolean region4 = fS1 <= -fExtDet;
+        boolean region3 = fS1 <= fExtDet;
+
+        if (region4) // region 4
+        {
+            fSqrDist = distanceRegion04(fB0, fB1, fC, -fA01, -extent);
+        } else if (region3) // region 3
+        {
+            fSqrDist = distanceRegion03(fB1, fC);
+        } else // region 2
+        {
+            fSqrDist = distanceRegion02(fA01, fB0, fB1, fC);
+        }
+        return fSqrDist;
+    }
+
+    private float distanceRegion00or01or05(float fA01, float fB0, float fB1, float fC, float fDet, float fS0, float fS1, float fExtDet) {
+        float fSqrDist;
+        boolean region00or01 = fS1 >= -fExtDet;
+        if (region00or01) {
+            boolean region0 = fS1 <= fExtDet;
+            if (region0) // region 0
+            {
+                fSqrDist = distanceRegion00(fA01, fB0, fB1, fC, fDet, fS0, fS1);
+            } else // region 1
+            {
+                fSqrDist = distanceRegion01(fA01, fB0, fB1, fC, extent);
+            }
+        } else // region 5
+        {
+            fSqrDist = distanceRegion05(fA01, fB0, fB1, fC);
+        }
+        return fSqrDist;
+    }
+
+    private float distanceRegion04(float fB0, float fB1, float fC, float v, float v2) {
+        float fS0;
+        float fS1;
+        float fSqrDist;
+        fS0 = -(v * extent + fB0);
+        if (fS0 > (float) 0.0) {
+            fS1 = v2;
+            fSqrDist = -fS0 * fS0 + fS1
+                    * (fS1 + ((float) 2.0) * fB1) + fC;
+        } else {
+            fS0 = (float) 0.0;
+            fS1 = -fB1;
+            if (fS1 < -extent) {
+                fS1 = -extent;
+            } else if (fS1 > extent) {
+                fS1 = extent;
+            }
+            fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
+        }
+        return fSqrDist;
+    }
+
+    private float distanceRegion03(float fB1, float fC) {
+        float fS0;
+        float fS1;
+        float fSqrDist;
+        fS0 = (float) 0.0;
+        fS1 = -fB1;
+        if (fS1 < -extent) {
+            fS1 = -extent;
+        } else if (fS1 > extent) {
+            fS1 = extent;
+        }
+        fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
+        return fSqrDist;
+    }
+
+    private float distanceRegion02(float fA01, float fB0, float fB1, float fC) {
+        float fS0;
+        float fS1;
+        float fSqrDist;
+        fS0 = -(fA01 * extent + fB0);
+        if (fS0 > (float) 0.0) {
+            fS1 = extent;
+            fSqrDist = -fS0 * fS0 + fS1
+                    * (fS1 + ((float) 2.0) * fB1) + fC;
+        } else {
+            fS0 = (float) 0.0;
+            fS1 = -fB1;
+            if (fS1 < -extent) {
+                fS1 = -extent;
+            } else if (fS1 > extent) {
+                fS1 = extent;
+            }
+            fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
+        }
+        return fSqrDist;
+    }
+
+    private float distanceRegion01(float fA01, float fB0, float fB1, float fC, float extent) {
+        float fS1;
+        float fS0;
+        float fSqrDist;
+        fS1 = extent;
+        fS0 = -(fA01 * fS1 + fB0);
+        if (fS0 > (float) 0.0) {
+            fSqrDist = -fS0 * fS0 + fS1
+                    * (fS1 + ((float) 2.0) * fB1) + fC;
+        } else {
+            fS0 = (float) 0.0;
+            fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
+        }
+        return fSqrDist;
+    }
+
+    private float distanceRegion00(float fA01, float fB0, float fB1, float fC, float fDet, float fS0, float fS1) {
+        float fSqrDist;// minimum at interior points of ray and segment
+        float fInvDet = ((float) 1.0) / fDet;
+        fS0 *= fInvDet;
+        fS1 *= fInvDet;
+        fSqrDist = fS0
+                * (fS0 + fA01 * fS1 + ((float) 2.0) * fB0)
+                + fS1
+                * (fA01 * fS0 + fS1 + ((float) 2.0) * fB1) + fC;
+        return fSqrDist;
+    }
+
+    private float distanceRegion05(float fA01, float fB0, float fB1, float fC) {
+        float fS1;
+        float fS0;
+        float fSqrDist;
+        fS1 = -extent;
+        fS0 = -(fA01 * fS1 + fB0);
+        if (fS0 > (float) 0.0) {
+            fSqrDist = -fS0 * fS0 + fS1
+                    * (fS1 + ((float) 2.0) * fB1) + fC;
+        } else {
+            fS0 = (float) 0.0;
+            fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
+        }
+        return fSqrDist;
+    }
+
+    private float raySegmentParallel(float fA01, float fB0, float fB1, float fC) {
+        float fS1 = extent;
+        float fS0;
+        float fSqrDist;
+        if (fA01 > (float) 0.0) {
+            // opposite direction vectors
+            fS1 *= -1;
+        }
+
+        fS0 = -(fA01 * fS1 + fB0);
+        if (fS0 > (float) 0.0) {
+            fSqrDist = -fS0 * fS0 + fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
+        } else {
+            fSqrDist = fS1 * (fS1 + ((float) 2.0) * fB1) + fC;
+        }
+        return fSqrDist;
     }
 
     public Vector3f getDirection() {
