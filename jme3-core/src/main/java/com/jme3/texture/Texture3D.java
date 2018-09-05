@@ -43,9 +43,9 @@ import java.io.IOException;
  */
 public class Texture3D extends Texture {
 
-    private WrapMode wrapS = WrapMode.EdgeClamp;
-    private WrapMode wrapT = WrapMode.EdgeClamp;
-    private WrapMode wrapR = WrapMode.EdgeClamp;
+    protected WrapMode wrapS = WrapMode.EdgeClamp;
+    protected WrapMode wrapT = WrapMode.EdgeClamp;
+    protected WrapMode wrapR = WrapMode.EdgeClamp;
 
     /**
      * Creates a new two-dimensional texture with default attributes.
@@ -101,8 +101,7 @@ public class Texture3D extends Texture {
     @Override
     public Texture createSimpleClone() {
         Texture3D clone = new Texture3D();
-        createSimpleClone(clone);
-        return clone;
+        return this.createSimpleClone(clone);
     }
 
     @Override

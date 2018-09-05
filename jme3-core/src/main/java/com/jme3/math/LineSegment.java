@@ -430,7 +430,6 @@ public class LineSegment implements Cloneable, Savable, java.io.Serializable {
         if (rayToSegmentNotParallel) {
             fSqrDist = raySegmentNotParallel(fA01, fB0, fB1, fC, fDet);
         } else {
-            // ray and segment are parallel
             fSqrDist = raySegmentParallel(fA01, fB0, fB1, fC);
         }
         return FastMath.abs(fSqrDist);
