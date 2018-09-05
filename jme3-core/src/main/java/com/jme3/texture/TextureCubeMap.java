@@ -89,6 +89,7 @@ public class TextureCubeMap extends Texture3D {
         return image;
     }
 
+    @Override
     public Texture createSimpleClone() {
         return super.createSimpleClone(new TextureCubeMap());
     }
