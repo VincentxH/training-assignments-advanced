@@ -47,13 +47,17 @@ import java.util.logging.Logger;
  * <p>
  * Given input data such as location, orientation (direction, left, up),
  * and viewport settings, it can compute data necessary to render objects
- * with the graphics library. Two matrices are generated, the view matrix
- * transforms objects from world space into eye space, while the projection
- * matrix transforms objects from eye space into clip space.
+ * with the graphics library.
+ *
+ * Two matrices are generated,  *
+ * the view matrix transforms objects from world space into eye space,
+ * while
+ * the projection matrix transforms objects from eye space into clip space.
  * </p>
  * <p>Another purpose of the camera class is to do frustum culling operations,
- * defined by six planes which define a 3D frustum shape, it is possible to
- * test if an object bounded by a mathematically defined volume is inside
+ * defined by six planes which define a 3D frustum shape,
+ *
+ * it is possible to test if an object bounded by a mathematically defined volume is inside
  * the camera frustum, and thus to avoid rendering objects that are outside
  * the frustum
  * </p>

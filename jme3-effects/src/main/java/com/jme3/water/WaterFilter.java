@@ -41,17 +41,16 @@ import com.jme3.light.Light;
 import com.jme3.material.Material;
 import com.jme3.math.*;
 import com.jme3.post.Filter;
-import com.jme3.post.Filter.Pass;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.Renderer;
 import com.jme3.renderer.ViewPort;
-import com.jme3.scene.Node;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Node;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.texture.Image.Format;
 import com.jme3.texture.Texture.WrapMode;
 import com.jme3.texture.Texture2D;
-import com.jme3.util.TempVars;
+
 import java.io.IOException;
 
 /**

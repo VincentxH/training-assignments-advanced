@@ -38,7 +38,7 @@ import com.jme3.asset.AssetNotFoundException;
 import com.jme3.opencl.Image.ImageDescriptor;
 import com.jme3.opencl.Image.ImageFormat;
 import com.jme3.opencl.Image.ImageType;
-import com.jme3.scene.VertexBuffer;
+import com.jme3.scene.basics.VertexBuffer;
 import com.jme3.texture.FrameBuffer;
 import com.jme3.texture.Texture;
 import java.io.BufferedReader;

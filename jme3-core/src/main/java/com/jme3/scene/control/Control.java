@@ -34,7 +34,7 @@ package com.jme3.scene.control;
 import com.jme3.export.Savable;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Spatial;
 
 /**
  * An interface for scene-graph controls. 

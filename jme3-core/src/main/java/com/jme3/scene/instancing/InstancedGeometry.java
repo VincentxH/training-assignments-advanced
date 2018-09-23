@@ -39,12 +39,12 @@ import com.jme3.export.Savable;
 import com.jme3.math.Matrix3f;
 import com.jme3.math.Matrix4f;
 import com.jme3.math.Quaternion;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.Spatial;
-import com.jme3.scene.VertexBuffer;
-import com.jme3.scene.VertexBuffer.Format;
-import com.jme3.scene.VertexBuffer.Type;
-import com.jme3.scene.VertexBuffer.Usage;
+import com.jme3.scene.basics.Geometry;
+import com.jme3.scene.basics.Spatial;
+import com.jme3.scene.basics.VertexBuffer;
+import com.jme3.scene.basics.VertexBuffer.Format;
+import com.jme3.scene.basics.VertexBuffer.Type;
+import com.jme3.scene.basics.VertexBuffer.Usage;
 import com.jme3.util.BufferUtils;
 import com.jme3.util.TempVars;
 import com.jme3.util.clone.Cloner;
@@ -91,10 +91,10 @@ public class InstancedGeometry extends Geometry {
      * Global user specified per-instance data.
      *
      * By default set to <code>null</code>, specify an array of VertexBuffers
-     * via {@link #setGlobalUserInstanceData(com.jme3.scene.VertexBuffer[]) }.
+     * via {@link #setGlobalUserInstanceData(VertexBuffer[]) }.
      *
      * @return global user specified per-instance data.
-     * @see #setGlobalUserInstanceData(com.jme3.scene.VertexBuffer[])
+     * @see #setGlobalUserInstanceData(VertexBuffer[])
      */
     public VertexBuffer[] getGlobalUserInstanceData() {
         return globalInstanceData;
@@ -129,7 +129,7 @@ public class InstancedGeometry extends Geometry {
      *
      * @return The per-instance transform data.
      *
-     * @see #setTransformUserInstanceData(com.jme3.scene.VertexBuffer)
+     * @see #setTransformUserInstanceData(VertexBuffer)
      */
     public VertexBuffer getTransformUserInstanceData() {
         return transformInstanceData;

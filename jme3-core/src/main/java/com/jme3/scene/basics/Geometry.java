@@ -29,7 +29,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.basics;
 
 import com.jme3.asset.AssetNotFoundException;
 import com.jme3.bounding.BoundingVolume;
@@ -42,7 +42,9 @@ import com.jme3.export.OutputCapsule;
 import com.jme3.material.Material;
 import com.jme3.math.Matrix4f;
 import com.jme3.renderer.Camera;
-import com.jme3.scene.VertexBuffer.Type;
+import com.jme3.scene.basics.VertexBuffer.Type;
+import com.jme3.scene.node.GeometryGroupNode;
+import com.jme3.scene.visitor.SceneGraphVisitor;
 import com.jme3.util.clone.Cloner;
 import com.jme3.util.clone.IdentityCloneFunction;
 import com.jme3.util.TempVars;
@@ -72,7 +74,7 @@ public class Geometry extends Spatial {
      * When true, the geometry's transform will not be applied.
      */
     protected boolean ignoreTransform = false;
-    protected transient Matrix4f cachedWorldMat = new Matrix4f();
+    public transient Matrix4f cachedWorldMat = new Matrix4f();
 
     /**
      * Specifies which {@link GeometryGroupNode} this <code>Geometry</code>
@@ -84,7 +86,7 @@ public class Geometry extends Spatial {
      * The start index of this <code>Geometry's</code> inside
      * the {@link GeometryGroupNode}.
      */
-    protected int startIndex = -1;
+    public int startIndex = -1;
 
     /**
      * Serialization only. Do not use.
@@ -157,7 +159,7 @@ public class Geometry extends Spatial {
      * Sets the LOD level to use when rendering the mesh of this geometry.
      * Level 0 indicates that the default index buffer should be used,
      * levels [1, LodLevels + 1] represent the levels set on the mesh
-     * with {@link Mesh#setLodLevels(com.jme3.scene.VertexBuffer[]) }.
+     * with {@link Mesh#setLodLevels(VertexBuffer[]) }.
      *
      * @param lod The lod level to set
      */
@@ -234,7 +236,7 @@ public class Geometry extends Spatial {
      *
      * @return the mesh to use for this geometry
      *
-     * @see #setMesh(com.jme3.scene.Mesh)
+     * @see #setMesh(Mesh)
      */
     public Mesh getMesh() {
         return mesh;

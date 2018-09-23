@@ -1,4 +1,9 @@
-package com.jme3.scene;
+package com.jme3.scene.node;
+
+import com.jme3.scene.basics.Geometry;
+import com.jme3.scene.basics.Mesh;
+import com.jme3.scene.basics.Node;
+import com.jme3.scene.basics.Spatial;
 
 /**
  * An abstract class for implementations that perform grouping of geometries
@@ -57,7 +62,7 @@ public abstract class GeometryGroupNode extends Node {
     
     /**
      * Called by {@link Geometry geom} to specify that its 
-     * {@link Geometry#setMesh(com.jme3.scene.Mesh) mesh}
+     * {@link Geometry#setMesh(Mesh) mesh}
      * has been changed.
      * 
      * This is also called when the geometry's 

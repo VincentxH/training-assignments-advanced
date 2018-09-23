@@ -44,8 +44,8 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.queue.GeometryList;
 import com.jme3.renderer.queue.RenderQueue;
-import com.jme3.scene.Node;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Node;
+import com.jme3.scene.basics.Spatial;
 import java.io.IOException;
 
 /**

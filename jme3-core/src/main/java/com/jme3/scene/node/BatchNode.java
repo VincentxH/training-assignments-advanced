@@ -29,7 +29,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.node;
 
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
@@ -45,6 +45,7 @@ import com.jme3.collision.CollisionResults;
 import com.jme3.material.Material;
 import com.jme3.math.Matrix4f;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.basics.*;
 import com.jme3.scene.mesh.IndexBuffer;
 import com.jme3.util.SafeArrayList;
 import com.jme3.util.TempVars;
@@ -57,7 +58,7 @@ import com.jme3.util.clone.JmeCloneable;
  * The geometries are directly attached to the node in the scene graph.
  * Usage is like any other node except you have to call the {@link #batch()} method once all the geometries have been attached to the sub scene graph and their material set
  * (see todo more automagic for further enhancements)
- * All the geometries that have been batched are set to not be rendered - {@link CullHint} is left intact.
+ * All the geometries that have been batched are set to not be rendered - {@link Spatial.CullHint} is left intact.
  * The sub geometries can be transformed as usual, their transforms are used to update the mesh of the geometryBatch.
  * Sub geoms can be removed but it may be slower than the normal spatial removing
  * Sub geoms can be added after the batch() method has been called but won't be batched and will just be rendered as normal geometries.

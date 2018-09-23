@@ -31,7 +31,7 @@
  */
 package com.jme3.renderer;
 
-import com.jme3.scene.Mesh;
+import com.jme3.scene.basics.Mesh;
 import com.jme3.shader.Shader;
 import com.jme3.texture.FrameBuffer;
 import com.jme3.texture.Image;

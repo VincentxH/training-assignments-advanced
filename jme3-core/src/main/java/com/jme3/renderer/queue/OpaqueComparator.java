@@ -34,7 +34,7 @@ package com.jme3.renderer.queue;
 import com.jme3.material.Material;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
-import com.jme3.scene.Geometry;
+import com.jme3.scene.basics.Geometry;
 
 public class OpaqueComparator implements GeometryComparator {
 

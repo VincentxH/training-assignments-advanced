@@ -44,7 +44,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Caps;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.Renderer;
-import com.jme3.scene.Geometry;
+import com.jme3.scene.basics.Geometry;
 import com.jme3.shader.DefineList;
 import com.jme3.shader.Shader;
 import com.jme3.shader.Uniform;

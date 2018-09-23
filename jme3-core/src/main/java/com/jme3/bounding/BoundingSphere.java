@@ -38,7 +38,7 @@ import com.jme3.collision.UnsupportedCollisionException;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.math.*;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.util.BufferUtils;
 import com.jme3.util.TempVars;
 import java.io.IOException;

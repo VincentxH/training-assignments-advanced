@@ -35,7 +35,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import com.jme3.renderer.Camera;
-import com.jme3.scene.Geometry;
+import com.jme3.scene.basics.Geometry;
 import com.jme3.util.ListSort;
 
 /**

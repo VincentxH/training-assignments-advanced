@@ -36,8 +36,8 @@ import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.export.OutputCapsule;
-import com.jme3.scene.Mesh;
-import com.jme3.scene.VertexBuffer.Type;
+import com.jme3.scene.basics.Mesh;
+import com.jme3.scene.basics.VertexBuffer.Type;
 import java.io.IOException;
 
 /**

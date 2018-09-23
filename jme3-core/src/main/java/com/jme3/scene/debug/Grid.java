@@ -31,9 +31,8 @@
  */
 package com.jme3.scene.debug;
 
-import com.jme3.scene.Mesh;
-import com.jme3.scene.Mesh.Mode;
-import com.jme3.scene.VertexBuffer.Type;
+import com.jme3.scene.basics.Mesh;
+import com.jme3.scene.basics.VertexBuffer.Type;
 import com.jme3.util.BufferUtils;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;

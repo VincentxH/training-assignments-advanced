@@ -34,9 +34,8 @@ package com.jme3.scene.control;
 import com.jme3.app.AppTask;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
-import com.jme3.scene.Spatial;
-import com.jme3.util.clone.Cloner;
-import com.jme3.util.clone.JmeCloneable;
+import com.jme3.scene.basics.Spatial;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Future;

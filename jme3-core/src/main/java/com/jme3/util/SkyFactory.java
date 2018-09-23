@@ -37,15 +37,14 @@ import com.jme3.bounding.BoundingSphere;
 import com.jme3.material.Material;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.queue.RenderQueue.Bucket;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Geometry;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.scene.shape.Sphere;
 import com.jme3.texture.Image;
 import com.jme3.texture.Image.Format;
 import com.jme3.texture.Texture;
 import com.jme3.texture.TextureCubeMap;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 
 /**
  * <code>SkyFactory</code> is used to create jME {@link Spatial}s that can

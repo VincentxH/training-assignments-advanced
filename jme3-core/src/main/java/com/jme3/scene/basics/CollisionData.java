@@ -29,38 +29,23 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.basics;
+
+import com.jme3.bounding.BoundingVolume;
+import com.jme3.collision.Collidable;
+import com.jme3.collision.CollisionResults;
+import com.jme3.export.Savable;
+import com.jme3.math.Matrix4f;
 
 /**
- * <code>SceneGraphVisitorAdapter</code> is used to traverse the scene
- * graph tree. The adapter version of the interface simply separates 
- * between the {@link Geometry geometries} and the {@link Node nodes} by
- * supplying visit methods that take them.
- * Use by calling {@link Spatial#depthFirstTraversal(com.jme3.scene.SceneGraphVisitor) }
- * or {@link Spatial#breadthFirstTraversal(com.jme3.scene.SceneGraphVisitor)}.
+ * <code>CollisionData</code> is an interface that can be used to 
+ * do triangle-accurate collision with bounding volumes and rays.
+ *
+ * @author Kirill Vainer
  */
-public class SceneGraphVisitorAdapter implements SceneGraphVisitor {
-    
-    /**
-     * Called when a {@link Geometry} is visited.
-     * 
-     * @param geom The visited geometry
-     */
-    public void visit(Geometry geom) {}
-    
-    /**
-     * Called when a {@link Node} is visited.
-     * 
-     * @param geom The visited node
-     */
-    public void visit(Node geom) {}
-
-    @Override
-    public final void visit(Spatial spatial) {
-        if (spatial instanceof Geometry) {
-            visit((Geometry)spatial);
-        } else {
-            visit((Node)spatial);
-        }
-    }
+public interface CollisionData extends Savable, Cloneable {
+    public int collideWith(Collidable other,
+                           Matrix4f worldMatrix,
+                           BoundingVolume worldBound,
+                           CollisionResults results);
 }

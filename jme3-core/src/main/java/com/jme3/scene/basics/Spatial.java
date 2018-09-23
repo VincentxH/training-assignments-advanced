@@ -29,7 +29,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.basics;
 
 import com.jme3.asset.AssetKey;
 import com.jme3.asset.CloneableSmartAsset;
@@ -48,6 +48,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.renderer.queue.RenderQueue.Bucket;
 import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.control.Control;
+import com.jme3.scene.visitor.SceneGraphVisitor;
 import com.jme3.util.clone.Cloner;
 import com.jme3.util.clone.IdentityCloneFunction;
 import com.jme3.util.clone.JmeCloneable;
@@ -150,7 +151,7 @@ public abstract class Spatial implements Savable, Cloneable, Collidable, Cloneab
     protected RenderQueue.Bucket queueBucket = RenderQueue.Bucket.Inherit;
     protected ShadowMode shadowMode = RenderQueue.ShadowMode.Inherit;
     public transient float queueDistance = Float.NEGATIVE_INFINITY;
-    protected Transform localTransform;
+    public Transform localTransform;
     protected Transform worldTransform;
     protected SafeArrayList<Control> controls = new SafeArrayList<Control>(Control.class);
     protected HashMap<String, Savable> userData = null;
@@ -271,7 +272,7 @@ public abstract class Spatial implements Savable, Cloneable, Collidable, Cloneab
      * Indicate that the transform of this spatial has changed and that
      * a refresh is required.
      */
-    protected void setTransformRefresh() {
+    public void setTransformRefresh() {
         refreshFlags |= RF_TRANSFORM;
         setBoundRefresh();
     }
@@ -1770,7 +1771,7 @@ public abstract class Spatial implements Savable, Cloneable, Collidable, Cloneab
 
     /**
      * Returns the Spatial's name followed by the class of the spatial <br>
-     * Example: "MyNode (com.jme3.scene.Spatial)
+     * Example: "MyNode (com.jme3.scene.basics.Spatial)
      *
      * @return Spatial's name followed by the class of the Spatial
      */
@@ -1808,7 +1809,7 @@ public abstract class Spatial implements Savable, Cloneable, Collidable, Cloneab
     /**
      * Visit each scene graph element ordered by DFS with the default post order mode.
      * @param visitor
-     * @see #depthFirstTraversal(com.jme3.scene.SceneGraphVisitor, com.jme3.scene.Spatial.DFSMode) 
+     * @see #depthFirstTraversal(SceneGraphVisitor, Spatial.DFSMode)
      */
     public void depthFirstTraversal(SceneGraphVisitor visitor) {
         depthFirstTraversal(visitor, DFSMode.POST_ORDER);

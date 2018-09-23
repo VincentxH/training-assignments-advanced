@@ -29,17 +29,16 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.basics;
 
 import com.jme3.bounding.BoundingVolume;
 import com.jme3.collision.Collidable;
 import com.jme3.collision.CollisionResults;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
-import com.jme3.export.Savable;
 import com.jme3.material.Material;
+import com.jme3.scene.visitor.SceneGraphVisitor;
 import com.jme3.util.SafeArrayList;
-import com.jme3.util.TempVars;
 import com.jme3.util.clone.Cloner;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -118,7 +117,7 @@ public class Node extends Spatial {
     }
 
     @Override
-    protected void setTransformRefresh(){
+    public void setTransformRefresh(){
         super.setTransformRefresh();
         for (Spatial child : children.getArray()){
             if ((child.refreshFlags & RF_TRANSFORM) != 0)

@@ -49,9 +49,9 @@ package jme3tools.optimize;
 
 import com.jme3.bounding.BoundingSphere;
 import com.jme3.math.Vector3f;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.Mesh;
-import com.jme3.scene.VertexBuffer;
+import com.jme3.scene.basics.Geometry;
+import com.jme3.scene.basics.Mesh;
+import com.jme3.scene.basics.VertexBuffer;
 import com.jme3.util.BufferUtils;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;

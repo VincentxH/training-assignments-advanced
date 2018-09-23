@@ -42,7 +42,7 @@ import com.jme3.font.BitmapFont;
 import com.jme3.material.Material;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.Caps;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.shader.ShaderGenerator;
 import com.jme3.texture.Texture;
 

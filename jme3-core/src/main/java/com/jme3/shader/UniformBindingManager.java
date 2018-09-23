@@ -35,6 +35,7 @@ import com.jme3.material.Material;
 import com.jme3.math.*;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.RenderManager;
+import com.jme3.scene.basics.Geometry;
 import com.jme3.system.Timer;
 import java.util.ArrayList;
 
@@ -213,8 +214,8 @@ public class UniformBindingManager {
     /**
      * Internal use only. Sets the world matrix to use for future
      * rendering. This has no effect unless objects are rendered manually
-     * using {@link Material#render(com.jme3.scene.Geometry, com.jme3.renderer.RenderManager) }.
-     * Using {@link #renderGeometry(com.jme3.scene.Geometry) } will 
+     * using {@link Material#render(Geometry, com.jme3.renderer.RenderManager) }.
+     * Using {@link #renderGeometry(Geometry) } will
      * override this value.
      * 
      * @param mat The world matrix to set

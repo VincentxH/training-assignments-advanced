@@ -31,7 +31,7 @@
  */
 package com.jme3.light;
 
-import com.jme3.scene.Geometry;
+import com.jme3.scene.basics.Geometry;
 
 /**
  * This is the interface to implement if you want to make your own LightProbe blending strategy.

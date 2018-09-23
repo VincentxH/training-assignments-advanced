@@ -32,7 +32,7 @@
 package com.jme3.material;
 
 import com.jme3.export.*;
-import com.jme3.scene.Mesh;
+import com.jme3.scene.basics.Mesh;
 import java.io.IOException;
 
 /**

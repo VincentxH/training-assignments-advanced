@@ -29,7 +29,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.basics;
 
 import com.jme3.export.*;
 import com.jme3.math.FastMath;
@@ -665,7 +665,7 @@ public class VertexBuffer extends NativeObject implements Savable, Cloneable {
 
     /**
      * Called to update the data in the buffer with new data. Can only
-     * be called after {@link VertexBuffer#setupData(com.jme3.scene.VertexBuffer.Usage, int, com.jme3.scene.VertexBuffer.Format, java.nio.Buffer) }
+     * be called after {@link VertexBuffer#setupData(VertexBuffer.Usage, int, VertexBuffer.Format, java.nio.Buffer) }
      * has been called. Note that it is fine to call this method on the
      * data already set, e.g. vb.updateData(vb.getData()), this will just
      * set the proper update flag indicating the data should be sent to the GPU

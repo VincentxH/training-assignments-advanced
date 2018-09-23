@@ -34,8 +34,8 @@ package com.jme3.renderer.queue;
 import com.jme3.post.SceneProcessor;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.RenderManager;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Geometry;
+import com.jme3.scene.basics.Spatial;
 
 /**
  * <code>RenderQueue</code> is used to queue up and sort 

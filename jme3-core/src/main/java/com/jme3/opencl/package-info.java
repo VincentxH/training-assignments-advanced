@@ -103,8 +103,8 @@
  * <p>
  * <b>Interoperability between OpenCL and jME3:</b><br>
  * This Wrapper allows to share jME3 Images and VertexBuffers with OpenCL.<br>
- * {@link com.jme3.scene.VertexBuffer} objects can be shared with OpenCL
- * by calling {@link com.jme3.opencl.Context#bindVertexBuffer(com.jme3.scene.VertexBuffer, com.jme3.opencl.MemoryAccess) }
+ * {@link com.jme3.scene.basics.VertexBuffer} objects can be shared with OpenCL
+ * by calling {@link com.jme3.opencl.Context#bindVertexBuffer(VertexBuffer, com.jme3.opencl.MemoryAccess) }
  * resulting in a {@link com.jme3.opencl.Buffer} object. This buffer object
  * can then be used as usual, allowing e.g. the dynamic modification of position buffers for particle systems.<br>
  * {@link com.jme3.texture.Image} and {@link com.jme3.texture.Texture} objects can be used in OpenCL with the method
@@ -161,3 +161,5 @@
 package com.jme3.opencl;
 
 //TODO: add profiling to Kernel, CommandQueue
+
+import com.jme3.scene.basics.VertexBuffer;

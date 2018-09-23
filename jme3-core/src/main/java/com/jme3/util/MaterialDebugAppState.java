@@ -57,9 +57,9 @@ import com.jme3.post.Filter;
 import com.jme3.post.Filter.Pass;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.RendererException;
-import com.jme3.scene.Geometry;
-import com.jme3.scene.Node;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Geometry;
+import com.jme3.scene.basics.Node;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.scene.shape.Box;
 import com.jme3.shader.Shader;
 

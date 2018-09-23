@@ -39,7 +39,7 @@ import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.export.OutputCapsule;
 import com.jme3.math.Vector3f;
-import com.jme3.scene.Node;
+import com.jme3.scene.basics.Node;
 import com.jme3.util.PlaceholderAssets;
 import com.jme3.util.clone.Cloner;
 import java.io.IOException;

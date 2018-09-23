@@ -32,11 +32,10 @@
 package com.jme3.util;
 
 import com.jme3.bounding.BoundingBox;
-import com.jme3.bounding.BoundingVolume;
 import com.jme3.collision.CollisionResults;
 import com.jme3.collision.bih.BIHNode.BIHStackData;
 import com.jme3.math.*;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Spatial;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;

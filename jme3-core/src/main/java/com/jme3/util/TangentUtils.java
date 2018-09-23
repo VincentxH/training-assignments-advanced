@@ -1,6 +1,7 @@
 package com.jme3.util;
 
-import com.jme3.scene.*;
+import com.jme3.scene.basics.Mesh;
+import com.jme3.scene.basics.VertexBuffer;
 
 /**
  * Created by Nehon on 03/10/2016.

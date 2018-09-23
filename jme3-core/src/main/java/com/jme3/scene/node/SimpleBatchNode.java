@@ -29,10 +29,11 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.node;
 
 import com.jme3.math.Matrix4f;
-import com.jme3.math.Transform;
+import com.jme3.scene.basics.Geometry;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.util.TempVars;
 
 /**
@@ -65,7 +66,7 @@ public class SimpleBatchNode extends BatchNode {
     }
 
     @Override
-    protected void setTransformRefresh() {
+    public void setTransformRefresh() {
         refreshFlags |= RF_TRANSFORM;
         setBoundRefresh();
         for (Batch batch : batches.getArray()) {

@@ -31,7 +31,7 @@
  */
 package com.jme3.light;
 
-import com.jme3.scene.Geometry;
+import com.jme3.scene.basics.Geometry;
 import java.util.ArrayList;
 import java.util.List;
 

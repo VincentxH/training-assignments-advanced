@@ -45,8 +45,8 @@ import com.jme3.export.OutputCapsule;
 import com.jme3.export.Savable;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
-import com.jme3.scene.Node;
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Node;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.texture.TextureCubeMap;
 import com.jme3.util.TempVars;
 import java.io.IOException;
@@ -60,7 +60,7 @@ import java.io.IOException;
  * - The irradiance map (used for indirect diffuse lighting in the PBR pipeline).
  * - The prefiltered environment map (used for indirect specular lighting and reflection in the PBE pipeline).
  * Note that when instanciating the LightProbe, both those maps are null. 
- * To render them see {@link LightProbeFactory#makeProbe(com.jme3.environment.EnvironmentCamera, com.jme3.scene.Node)}
+ * To render them see {@link LightProbeFactory#makeProbe(com.jme3.environment.EnvironmentCamera, Node)}
  * and {@link EnvironmentCamera}.
  * 
  * The light probe has an area of effect that is a bounding volume centered on its position. (for now only Bounding spheres are supported).
@@ -84,7 +84,7 @@ public class LightProbe extends Light implements Savable {
 
     /**
      * Empty constructor used for serialization. 
-     * You should never call it, use {@link LightProbeFactory#makeProbe(com.jme3.environment.EnvironmentCamera, com.jme3.scene.Node)} instead
+     * You should never call it, use {@link LightProbeFactory#makeProbe(com.jme3.environment.EnvironmentCamera, Node)} instead
      */
     public LightProbe() {        
     }

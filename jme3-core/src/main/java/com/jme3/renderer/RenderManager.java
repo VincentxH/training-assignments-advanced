@@ -49,7 +49,7 @@ import com.jme3.renderer.queue.GeometryList;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.renderer.queue.RenderQueue.Bucket;
 import com.jme3.renderer.queue.RenderQueue.ShadowMode;
-import com.jme3.scene.*;
+import com.jme3.scene.basics.*;
 import com.jme3.shader.Shader;
 import com.jme3.shader.UniformBinding;
 import com.jme3.shader.UniformBindingManager;
@@ -422,7 +422,7 @@ public class RenderManager {
      * @param forcedTechnique The forced technique name to use, set to null
      * to return to normal functionality.
      * 
-     * @see #renderGeometry(com.jme3.scene.Geometry) 
+     * @see #renderGeometry(Geometry)
      */
     public void setForcedTechnique(String forcedTechnique) {
         this.forcedTechnique = forcedTechnique;
@@ -508,8 +508,8 @@ public class RenderManager {
     /**
      * Internal use only. Sets the world matrix to use for future
      * rendering. This has no effect unless objects are rendered manually
-     * using {@link Material#render(com.jme3.scene.Geometry, com.jme3.renderer.RenderManager) }.
-     * Using {@link #renderGeometry(com.jme3.scene.Geometry) } will 
+     * using {@link Material#render(Geometry, com.jme3.renderer.RenderManager) }.
+     * Using {@link #renderGeometry(Geometry) } will
      * override this value.
      * 
      * @param mat The world matrix to set
@@ -556,7 +556,7 @@ public class RenderManager {
      * @see Technique
      * @see RenderState
      * @see Material#selectTechnique(java.lang.String, com.jme3.renderer.RenderManager) 
-     * @see Material#render(com.jme3.scene.Geometry, com.jme3.renderer.RenderManager) 
+     * @see Material#render(Geometry, com.jme3.renderer.RenderManager)
      */
     public void renderGeometry(Geometry geom) {
         if (geom.isIgnoreTransform()) {
@@ -621,12 +621,12 @@ public class RenderManager {
      * Renders the given GeometryList.
      * <p>
      * For every geometry in the list, the 
-     * {@link #renderGeometry(com.jme3.scene.Geometry) } method is called.
+     * {@link #renderGeometry(Geometry) } method is called.
      * 
      * @param gl The geometry list to render.
      * 
      * @see GeometryList
-     * @see #renderGeometry(com.jme3.scene.Geometry) 
+     * @see #renderGeometry(Geometry)
      */
     public void renderGeometryList(GeometryList gl) {
         for (int i = 0; i < gl.size(); i++) {
@@ -681,7 +681,7 @@ public class RenderManager {
      * checking for culling as the call goes down the graph recursively.
      * <p>
      * First, the scene is checked for culling based on the <code>Spatial</code>s
-     * {@link Spatial#setCullHint(com.jme3.scene.Spatial.CullHint) cull hint},
+     * {@link Spatial#setCullHint(Spatial.CullHint) cull hint},
      * if the camera frustum contains the scene, then this method is recursively
      * called on its children.
      * <p>
@@ -692,7 +692,7 @@ public class RenderManager {
      * In addition to enqueuing the visible geometries, this method
      * also scenes which cast or receive shadows, by putting them into the
      * RenderQueue's 
-     * {@link RenderQueue#addToShadowQueue(com.jme3.scene.Geometry, com.jme3.renderer.queue.RenderQueue.ShadowMode) 
+     * {@link RenderQueue#addToShadowQueue(Geometry, com.jme3.renderer.queue.RenderQueue.ShadowMode)
      * shadow queue}. Each Spatial which has its 
      * {@link Spatial#setShadowMode(com.jme3.renderer.queue.RenderQueue.ShadowMode) shadow mode}
      * set to not off, will be put into the appropriate shadow queue, note that

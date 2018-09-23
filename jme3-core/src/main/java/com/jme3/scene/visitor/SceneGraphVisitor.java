@@ -29,23 +29,21 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.visitor;
 
-import com.jme3.bounding.BoundingVolume;
-import com.jme3.collision.Collidable;
-import com.jme3.collision.CollisionResults;
-import com.jme3.export.Savable;
-import com.jme3.math.Matrix4f;
+import com.jme3.scene.basics.Spatial;
 
 /**
- * <code>CollisionData</code> is an interface that can be used to 
- * do triangle-accurate collision with bounding volumes and rays.
- *
- * @author Kirill Vainer
+ * <code>SceneGraphVisitorAdapter</code> is used to traverse the scene
+ * graph tree. 
+ * Use by calling {@link Spatial#depthFirstTraversal(SceneGraphVisitor) }
+ * or {@link Spatial#breadthFirstTraversal(SceneGraphVisitor)}.
  */
-public interface CollisionData extends Savable, Cloneable {
-    public int collideWith(Collidable other,
-                           Matrix4f worldMatrix,
-                           BoundingVolume worldBound,
-                           CollisionResults results);
+public interface SceneGraphVisitor {
+    /**
+     * Called when a spatial is visited in the scene graph.
+     * 
+     * @param spatial The visited spatial
+     */
+    public void visit(Spatial spatial);
 }

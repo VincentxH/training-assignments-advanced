@@ -33,8 +33,8 @@ package com.jme3.renderer;
 
 import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
-import com.jme3.scene.Mesh;
-import com.jme3.scene.VertexBuffer;
+import com.jme3.scene.basics.Mesh;
+import com.jme3.scene.basics.VertexBuffer;
 import com.jme3.shader.Shader;
 import com.jme3.texture.FrameBuffer;
 import com.jme3.texture.Image;
@@ -167,19 +167,19 @@ public class RenderContext {
     /**
      * Currently bound element array vertex buffer.
      * 
-     * @see Renderer#renderMesh(com.jme3.scene.Mesh, int, int) 
+     * @see Renderer#renderMesh(Mesh, int, int)
      */
     public int boundElementArrayVBO;
 
     /**
-     * @see Renderer#renderMesh(com.jme3.scene.Mesh, int, int) 
+     * @see Renderer#renderMesh(Mesh, int, int)
      */
     public int boundVertexArray;
 
     /**
      * Currently bound array vertex buffer.
      * 
-     * @see Renderer#renderMesh(com.jme3.scene.Mesh, int, int) 
+     * @see Renderer#renderMesh(Mesh, int, int)
      */
     public int boundArrayVBO;
     

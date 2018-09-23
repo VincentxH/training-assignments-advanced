@@ -31,7 +31,7 @@
  */
 package com.jme3.animation;
 
-import com.jme3.scene.Spatial;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.util.clone.JmeCloneable;
 
 /**

@@ -31,6 +31,8 @@
  */
 package com.jme3.opencl;
 
+import com.jme3.scene.basics.VertexBuffer;
+
 import java.nio.ByteBuffer;
 
 /**
@@ -374,7 +376,7 @@ public abstract class Buffer extends AbstractOpenCLObject {
     /**
      * Aquires this buffer object for using. Only call this method if this buffer
      * represents a shared object from OpenGL, created with e.g.
-     * {@link Context#bindVertexBuffer(com.jme3.scene.VertexBuffer, com.jme3.opencl.MemoryAccess) }.
+     * {@link Context#bindVertexBuffer(VertexBuffer, com.jme3.opencl.MemoryAccess) }.
      * This method must be called before the buffer is used. After the work is
      * done, the buffer must be released by calling
      * {@link #releaseBufferForSharingAsync(com.jme3.opencl.CommandQueue) }
@@ -387,7 +389,7 @@ public abstract class Buffer extends AbstractOpenCLObject {
     /**
      * Aquires this buffer object for using. Only call this method if this buffer
      * represents a shared object from OpenGL, created with e.g.
-     * {@link Context#bindVertexBuffer(com.jme3.scene.VertexBuffer, com.jme3.opencl.MemoryAccess) }.
+     * {@link Context#bindVertexBuffer(VertexBuffer, com.jme3.opencl.MemoryAccess) }.
      * This method must be called before the buffer is used. After the work is
      * done, the buffer must be released by calling
      * {@link #releaseBufferForSharingAsync(com.jme3.opencl.CommandQueue) }

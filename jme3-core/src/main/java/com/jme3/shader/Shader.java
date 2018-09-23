@@ -32,7 +32,7 @@
 package com.jme3.shader;
 
 import com.jme3.renderer.Renderer;
-import com.jme3.scene.VertexBuffer;
+import com.jme3.scene.basics.VertexBuffer;
 import com.jme3.util.IntMap;
 import com.jme3.util.IntMap.Entry;
 import com.jme3.util.ListMap;

@@ -29,7 +29,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.node;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,6 +48,8 @@ import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.export.OutputCapsule;
+import com.jme3.scene.basics.Node;
+import com.jme3.scene.basics.Spatial;
 import com.jme3.util.SafeArrayList;
 import com.jme3.util.clone.Cloner;
 

@@ -32,7 +32,7 @@
 package com.jme3.light;
 
 import com.jme3.renderer.Camera;
-import com.jme3.scene.Geometry;
+import com.jme3.scene.basics.Geometry;
 
 /**
  * <code>LightFilter</code> is used to determine which lights should be
@@ -44,7 +44,7 @@ public interface LightFilter {
     
     /**
      * Sets the camera for which future filtering is to be done against in
-     * {@link #filterLights(com.jme3.scene.Geometry, com.jme3.light.LightList)}.
+     * {@link #filterLights(Geometry, com.jme3.light.LightList)}.
      * 
      * @param camera The camera to perform light filtering against.
      */

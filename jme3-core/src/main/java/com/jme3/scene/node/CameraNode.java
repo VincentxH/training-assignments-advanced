@@ -29,71 +29,72 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jme3.scene;
+package com.jme3.scene.node;
 
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
-import com.jme3.light.Light;
-import com.jme3.scene.control.LightControl;
-import com.jme3.scene.control.LightControl.ControlDirection;
+import com.jme3.renderer.Camera;
+import com.jme3.scene.basics.Node;
+import com.jme3.scene.control.CameraControl;
+import com.jme3.scene.control.CameraControl.ControlDirection;
 import com.jme3.util.clone.Cloner;
 import java.io.IOException;
 
 /**
- * <code>LightNode</code> is used to link together a {@link Light} object
- * with a {@link Node} object.
+ * <code>CameraNode</code> simply uses {@link CameraControl} to implement
+ * linking of camera and node data.
  *
  * @author Tim8Dev
  */
-public class LightNode extends Node {
+public class CameraNode extends Node {
 
-    private LightControl lightControl;
+    private CameraControl camControl;
 
     /**
      * Serialization only. Do not use.
      */
-    public LightNode() {
+    public CameraNode() {
     }
 
-    public LightNode(String name, Light light) {
-        this(name, new LightControl(light));
+    public CameraNode(String name, Camera camera) {
+        this(name, new CameraControl(camera));
     }
 
-    public LightNode(String name, LightControl control) {
+    public CameraNode(String name, CameraControl control) {
         super(name);
         addControl(control);
-        lightControl = control;
+        camControl = control;
     }
 
-    /**
-     * Enable or disable the <code>LightNode</code> functionality.
-     *
-     * @param enabled If false, the functionality of LightNode will
-     * be disabled.
-     */
     public void setEnabled(boolean enabled) {
-        lightControl.setEnabled(enabled);
+        camControl.setEnabled(enabled);
     }
 
     public boolean isEnabled() {
-        return lightControl.isEnabled();
+        return camControl.isEnabled();
     }
 
     public void setControlDir(ControlDirection controlDir) {
-        lightControl.setControlDir(controlDir);
+        camControl.setControlDir(controlDir);
     }
 
-    public void setLight(Light light) {
-        lightControl.setLight(light);
+    public void setCamera(Camera camera) {
+        camControl.setCamera(camera);
     }
 
     public ControlDirection getControlDir() {
-        return lightControl.getControlDir();
+        return camControl.getControlDir();
     }
 
-    public Light getLight() {
-        return lightControl.getLight();
+    public Camera getCamera() {
+        return camControl.getCamera();
     }
+
+//    @Override
+//    public void lookAt(Vector3f position, Vector3f upVector) {
+//        this.lookAt(position, upVector);
+//        camControl.getCamera().lookAt(position, upVector);
+//    }
 
     /**
      *  Called internally by com.jme3.util.clone.Cloner.  Do not call directly.
@@ -102,21 +103,21 @@ public class LightNode extends Node {
     public void cloneFields( Cloner cloner, Object original ) {
         super.cloneFields(cloner, original);
 
-        // A change in behavior... I think previously LightNode was probably
-        // not really cloneable... or at least its lightControl would be pointing
+        // A change in behavior... I think previously CameraNode was probably
+        // not really cloneable... or at least its camControl would be pointing
         // to the wrong control. -pspeed
-        this.lightControl = cloner.clone(lightControl);
+        this.camControl = cloner.clone(camControl);
     }
 
     @Override
     public void read(JmeImporter im) throws IOException {
         super.read(im);
-        lightControl = (LightControl)im.getCapsule(this).readSavable("lightControl", null);
+        camControl = (CameraControl)im.getCapsule(this).readSavable("camControl", null);
     }
 
     @Override
     public void write(JmeExporter ex) throws IOException {
         super.write(ex);
-        ex.getCapsule(this).write(lightControl, "lightControl", null);
+        ex.getCapsule(this).write(camControl, "camControl", null);
     }
 }
